@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Choose Action</h1>
+<a href="{% url 'select_semester' action='edit' %}">
+  <button>Edit Marks</button>
+</a>
+<a href="{% url 'select_semester' action='view' %}">
+  <button>View Marks</button>
+</a>
+</body>
+</html>

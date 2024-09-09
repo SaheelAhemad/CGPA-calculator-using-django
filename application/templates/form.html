@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator</title>
+    <link rel="stylesheet" href="../static/form.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter your marks</h1>
+        
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="21CS51">Automata Theory and Compiler Design (credits: 3)</label>
+            <input type="text" id="21CS51" name="21CS51">
+
+            <label for="21CS52">Computer Networks (credits: 4)</label>
+            <input type="text" id="21CS52" name="21CS52">
+
+            <label for="21CS53">Database Management Systems (credits: 3)</label>
+            <input type="text" id="21CS53" name="21CS53">
+
+            <label for="21CS54">Artificial Intelligence and Machine Learning (credits: 3)</label>
+            <input type="text" id="21CS54" name="21CS54">
+
+            <label for="21CSL55">Database Management Systems Laboratory with Mini Project (credits: 1)</label>
+            <input type="text" id="21CSL55" name="21CSL55">
+
+            <label for="21RMI56">Research Methodology & Intellectual Property Rights (credits: 2)</label>
+            <input type="text" id="21RMI56" name="21RMI56">
+
+            <label for="21CIV57">Environmental Studies (credits: 1)</label>
+            <input type="text" id="21CIV57" name="21CIV57">
+
+            <label for="21CS58x">Ability Enhancement Course (credits: 1)</label>
+            <input type="text" id="21CS58x" name="21CS58x">
+
+            <button type="submit">Calculate SGPA</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!-- templates/form.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+</head>
+<body>
+    <h1>Enter Marks for Semester {{ semester_number }}</h1>
+    <form method="post" action="{% url 'get_data' %}">
+        {% csrf_token %}
+        <input type="hidden" name="semester_number" value="{{ semester_number }}">
+        {% for subject in subjects %}
+            <div>
+                <label for="{{ subject.subcode }}">{{ subject.name }}</label>
+                <input type="text" id="{{ subject.subcode }}" name="{{ subject.subcode }}" placeholder="Enter marks">
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #1877f2;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .marks-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .subject-item {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #606770;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #dddfe2;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background-color: #166fe5;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Marks for Semester {{ semester_number }}</h1>
+    <div class="marks-container">
+        <form method="post" action="{% url 'get_data' %}">
+            {% csrf_token %}
+            <input type="hidden" name="semester_number" value="{{ semester_number }}">
+            {% for subject in subjects %}
+                <div class="subject-item">
+                    <label for="{{ subject.subcode }}">{{ subject.name }}</label>
+                    <input type="text" id="{{ subject.subcode }}" name="{{ subject.subcode }}" placeholder="Enter marks">
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

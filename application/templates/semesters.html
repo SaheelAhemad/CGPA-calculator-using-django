@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Semester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #1877f2;
+            margin-bottom: 2rem;
+        }
+        .semester-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .semester-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .edit-btn {
+            background-color: #1877f2;
+            color: white;
+        }
+        .edit-btn:hover {
+            background-color: #166fe5;
+        }
+        .view-btn {
+            background-color: #42b72a;
+            color: white;
+        }
+        .view-btn:hover {
+            background-color: #36a420;
+        }
+        @media (max-width: 600px) {
+            .semester-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            button {
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Semester</h1>
+    <div class="semester-container">
+        {% for semester in semesters %}
+            <div class="semester-item">
+                <form action="{% url 'edit_semester' %}" method="get">
+                    <input type="hidden" name="semester_number" value="{{ semester.number }}">
+                    <button type="submit" class="edit-btn">Edit Semester {{ semester.number }}</button>
+                </form>
+                <form action="{% url 'view_results' %}" method="get">
+                    <input type="hidden" name="semester_number" value="{{ semester.number }}">
+                    <button type="submit" class="view-btn">View Results for Semester {{ semester.number }}</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
